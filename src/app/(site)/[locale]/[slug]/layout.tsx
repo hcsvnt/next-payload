@@ -1,7 +1,7 @@
 import type { Locale } from '@/static';
 
-import Footer from '@/globals/Footer/Footer.component';
-import Header from '@/globals/Header/Header.component';
+import Footer from '@/globals/Footer/Footer';
+import Header from '@/globals/Header/Header';
 import '@/styles/main.scss';
 import { DEFAULT_LOCALE } from '@/static';
 

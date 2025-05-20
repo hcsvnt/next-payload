@@ -8,13 +8,13 @@ export const ThirdPartyAccess: CollectionConfig = {
         singular: {
             en: 'Third Party Access',
             de: 'Drittanbieterzugriff',
-            pl: 'Dostęp osób trzecich',
+            pl: 'Dostęp aplilacji zewnętrznych',
             es: 'Acceso de terceros'
         },
         plural: {
             en: 'Third Party Access',
-            de: 'Drittanbieterzugriff',
-            pl: 'Dostęp osób trzecich',
+            de: 'Drittanbieterzugriffe',
+            pl: 'Dostęp aplikacji zewnętrznych',
             es: 'Acceso de terceros'
         }
     }),

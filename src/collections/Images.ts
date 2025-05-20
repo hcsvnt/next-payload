@@ -2,9 +2,24 @@ import type { CollectionConfig } from 'payload';
 
 import { anyone } from '@/access/anyone';
 import { authenticated } from '@/access/authenticated';
+import { buildLabels } from '@/static';
 
 export const Images: CollectionConfig = {
     slug: 'images',
+    labels: buildLabels({
+        singular: {
+            en: 'Image',
+            de: 'Bild',
+            pl: 'Obraz',
+            es: 'Imagen'
+        },
+        plural: {
+            en: 'Images',
+            de: 'Bilder',
+            pl: 'Obrazy',
+            es: 'Imágenes'
+        }
+    }),
     access: {
         create: authenticated,
         delete: authenticated,
@@ -38,7 +53,8 @@ export const Images: CollectionConfig = {
             }
         ],
         resizeOptions: {
-            width: 4096 // 4k max
+            width: 4096, // 4k max
+            withoutEnlargement: true
         }
     }
 };
@@ -47,16 +63,16 @@ export const Images: CollectionConfig = {
 
 function generateImageName({
     originalName,
-    height,
     sizeName,
-    extension,
-    width
+    extension
+    // width,
+    // height
 }: {
     originalName: string;
-    height: number;
     sizeName: string;
     extension: string;
     width: number;
+    height: number;
 }) {
     return `${originalName}-${sizeName}.${extension}`;
 }

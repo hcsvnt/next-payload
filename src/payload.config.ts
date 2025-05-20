@@ -14,14 +14,12 @@ import type { Mutable } from '@/types';
 
 import { DEFAULT_LOCALE, LOCALES } from '@/static';
 
-import { Categories } from './collections/Categories';
 import { Images } from './collections/Images';
-import { News } from './collections/News';
 import { Pages } from './collections/Pages';
-import { ThirdPartyAccess } from './collections/ThridPartyAccess';
+// import { ThirdPartyAccess } from './collections/ThridPartyAccess';
 import { Users } from './collections/Users';
-import { Footer } from './globals/Footer/footer';
-import { Header } from './globals/Header/header';
+import { Footer } from './globals/Footer/footer.global';
+import { Header } from './globals/Header/header.global';
 import { plugins } from './payload.plugins';
 import { getServerURL } from './utils/getServerURL';
 
@@ -33,7 +31,7 @@ export default buildConfig({
      * Data Model
      */
     globals: [Header, Footer],
-    collections: [Pages, News, Categories, Images, Users, ThirdPartyAccess],
+    collections: [Pages, Images, Users],
     /**
      * General Configuration
      */
