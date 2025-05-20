@@ -1,69 +1,53 @@
-@import "mixins";
-
-body::before {
-	display: none;
-
-	@include breakpoint(phone) {
-		content: "phone";
-	}
-
-	@include breakpoint(tablet) {
-		content: "tablet";
-	}
-
-	@include breakpoint(desktop) {
-		content: "desktop";
-	}
-}
+@use 'mixins';
 
 // Just Phones
-@include breakpoint(phone) {
-	.tablet-only,
-	%tablet-only,
-	.phone-hide,
-	%phone-hide {
-		display: none !important;
-	}
+@include mixins.breakpoint(phone) {
+    .tablet-only,
+    %tablet-only,
+    .phone-hide,
+    %phone-hide {
+        display: none !important;
+    }
 }
 
 // Tablet & Desktop
-@include breakpoint(tablet) {
-	.phone-only,
-	.tablet-hide,
-	%tablet-hide {
-		display: none !important;
-	}
+@include mixins.breakpoint(tablet) {
+    .phone-only,
+    .tablet-hide,
+    %tablet-hide {
+        display: none !important;
+    }
 }
 
 // Desktop
-@include breakpoint(desktop) {
-	.phone-only,
-	.tablet-only,
-	%tablet-only,
-	.desktop-hide,
-	%desktop-hide {
-		display: none !important;
-	}
+@include mixins.breakpoint(desktop) {
+    .phone-only,
+    .tablet-only,
+    %tablet-only,
+    .desktop-hide,
+    %desktop-hide {
+        display: none !important;
+    }
 }
 
 // Not Desktop
-@include breakpoint(not-desktop) {
-	.desktop-only,
-	%desktop-only {
-		display: none !important;
-	}
+@include mixins.breakpoint(not-desktop) {
+    .desktop-only,
+    %desktop-only {
+        display: none !important;
+    }
 }
 
 // Touch
-@include breakpoint(touch) {
-	.touch-hide {
-		display: none !important;
-	}
+@include mixins.breakpoint(touch) {
+    .touch-hide {
+        display: none !important;
+    }
 }
 
 // Non-Touch
-@include breakpoint(not-touch) {
-	.touch-only {
-		display: none !important;
-	}
+@include mixins.breakpoint(not-touch) {
+    .touch-only {
+        display: none !important;
+    }
 }

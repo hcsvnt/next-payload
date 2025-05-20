@@ -14,7 +14,7 @@ export default async function News({ title, news }: NewsBlock) {
             <p>{title}</p>
             <ul>
                 {/* todo: shouldn't be casted */}
-                {(news as News[]).map(({ id, title, hero_image, content, published_at }) => {
+                {(news as News[]).map(({ id, title, content }) => {
                     return (
                         <li key={id}>
                             <Heading as='h2'>{title}</Heading>

@@ -1,9 +1,9 @@
 /* stylelint-disable */
 @use 'sass:math';
 
-@import 'variables/sizes';
-@import 'variables/zindex';
-@import 'variables/fonts';
+@use 'variables/sizes';
+@use 'variables/zindex';
+@use 'variables/fonts';
 
 // Hover
 @mixin hover {
@@ -17,39 +17,43 @@
 // Breakpoint
 @mixin breakpoint($point) {
     @if $point == 'phone' {
-        @media (max-width: $size-tablet - 1px) {
+        @media (max-width: #{sizes.$size-tablet - 1px}) {
             @content;
         }
     } @else if $point == 'phone-small' {
-        @media (max-width: $size-min) {
+        @media (max-width: sizes.$size-min) {
             @content;
         }
     } @else if $point == 'not-phone' {
-        @media (min-width: $size-tablet) {
+        @media (min-width: sizes.$size-tablet) {
             @content;
         }
     } @else if $point == 'tablet' {
-        @media (min-width: $size-tablet) and (max-width: $size-desktop - 1px) {
+        @media (min-width: sizes.$size-tablet) and (max-width: #{sizes.$size-desktop - 1px}) {
             @content;
         }
     } @else if $point == 'desktop' {
-        @media (min-width: $size-desktop) {
+        @media (min-width: sizes.$size-desktop) {
             @content;
         }
     } @else if $point == 'hd' {
-        @media (min-width: $size-hd) {
+        @media (min-width: sizes.$size-hd) {
+            @content;
+        }
+    } @else if $point == 'wxqhd' {
+        @media (min-width: sizes.$size-wxqhd) {
             @content;
         }
     } @else if $point == 'not-desktop' {
-        @media (max-width: $size-desktop - 1px) {
+        @media (max-width: #{sizes.$size-desktop - 1px}) {
             @content;
         }
     } @else if $point == 'not-hd' {
-        @media (max-width: $size-hd - 1px) {
+        @media (max-width: #{sizes.$size-hd - 1px}) {
             @content;
         }
     } @else if $point == 'laptop' {
-        @media (min-width: $size-desktop) and (max-height: $size-laptop) {
+        @media (min-width: sizes.$size-desktop) and (max-height: sizes.$size-laptop) {
             @content;
         }
     } @else if $point == 'landscape' {
@@ -67,7 +71,7 @@
     } @else if $point == 'retina' {
         @media only screen and (-webkit-min-device-pixel-ratio: 2),
             only screen and (resolution >= 192dpi),
-            only screen and (min-width: $size-desktop) {
+            only screen and (min-width: sizes.$size-desktop) {
             @content;
         }
     } @else if $point == 'tablet-landscape' {
@@ -99,31 +103,6 @@
         line-height: strip-units($line);
     } @else {
         line-height: math.div(strip-units($line), strip-units($size));
-    }
-}
-
-// Font size variable
-@mixin font-size-var($size) {
-    $size-values: map-get($fonts, $size);
-
-    @if type-of($size-values) == 'null' {
-        @error "Font size '#{$size}' not found in $fonts map.";
-    } @else {
-        $desktop: nth($size-values, 1);
-        $tablet: nth($size-values, 2);
-        $phone: nth($size-values, 3);
-
-        $bps: (
-            desktop: nth($size-values, 1),
-            tablet: nth($size-values, 2),
-            phone: nth($size-values, 3)
-        );
-
-        @each $bp, $font-size in $bps {
-            @include breakpoint($bp) {
-                @include font-size(nth($font-size, 1), nth($font-size, 2));
-            }
-        }
     }
 }
 
@@ -208,7 +187,7 @@
 
 // REM/VREM
 @function vrem($size) {
-    @return math.div(strip-units($size), strip-units($browser-context)) + rem;
+    @return math.div(strip-units($size), strip-units(sizes.$browser-context)) + rem;
 }
 
 // Trim-Font - simulates leading-trim, by adjusting margins based on font-size and line-height

@@ -98,6 +98,7 @@ function getLocale(request: NextRequest): string {
             DEFAULT_LOCALE.code
         );
     } catch (e) {
+        // eslint-disable-next-line no-console
         console.error(e);
         return DEFAULT_LOCALE.code;
     }

@@ -1,6 +1,6 @@
-@import 'mixins';
-@import 'variables/transitions';
-@import 'variables/sizes';
+@use 'mixins';
+@use 'variables/transitions';
+@use 'variables/sizes';
 
 @layer base {
     :root {
@@ -10,12 +10,12 @@
         /**
 		* Sizes / General
 		*/
-        --padding: #{vw(24)};
-        --padding-small: #{vw(10)};
+        --padding: #{mixins.vw(24)};
+        --padding-small: #{mixins.vw(10)};
 
         @include breakpoint(phone) {
-            --padding: #{vw(17, phone)};
-            --padding-small: #{vw(8, phone)};
+            --padding: #{mixins.vw(17, phone)};
+            --padding-small: #{mixins.vw(8, phone)};
         }
 
         /**
@@ -49,15 +49,16 @@
         /**
 		* Transitions
 		*/
-        --transition: #{$time $ease-custom};
-        --transition-fast: #{$time-fast $ease-custom};
-        --transition-fast-delay: #{$time-fast $ease-custom $time-fast};
-        --transition-slow: #{$time-slow $ease-custom};
-        --ease-in: #{$ease-in};
-        --ease-out: #{$ease-out};
-        --ease-in-out: #{$ease-in-out};
-        --ease-out-back: #{$ease-out-back};
-        --ease-custom: #{$ease-custom};
+        --transition: #{transitions.$time transitions.$ease-custom};
+        --transition-fast: #{transitions.$time-fast transitions.$ease-custom};
+        --transition-fast-delay: #{transitions.$time-fast transitions.$ease-custom
+            transitions.$time-fast};
+        --transition-slow: #{transitions.$time-slow transitions.$ease-custom};
+        --ease-in: #{transitions.$ease-in};
+        --ease-out: #{transitions.$ease-out};
+        --ease-in-out: #{transitions.$ease-in-out};
+        --ease-out-back: #{transitions.$ease-out-back};
+        --ease-custom: #{transitions.$ease-custom};
     }
 }
 
@@ -70,7 +71,7 @@ body {
 
 html {
     @include breakpoint(desktop) {
-        font-size: vw($browser-context);
+        font-size: mixins.vw(sizes.$browser-context);
     }
 
     @include breakpoint(hd) {
@@ -78,11 +79,11 @@ html {
     }
 
     @include breakpoint(tablet) {
-        font-size: vw($browser-context, tablet);
+        font-size: mixins.vw(sizes.$browser-context, tablet);
     }
 
     @include breakpoint(phone) {
-        font-size: vw($browser-context, phone);
+        font-size: mixins.vw(sizes.$browser-context, phone);
     }
 }
 
@@ -95,47 +96,35 @@ main {
     padding: 1rem;
 }
 
-// README.md at /docs
-.docs {
-    width: 100%;
-    padding-block: 2rem;
-    @include flex(column);
-
-    div {
-        border: 4px dashed rgb(255, 196, 18);
-        padding: 1rem 2rem;
-        max-width: 80ch;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        margin-top: 1rem;
-    }
-
-    p + * {
-        margin-top: 1rem;
-    }
-
-    a {
-        color: blue;
-        text-decoration: underline;
-    }
-
-    li li {
-        margin-left: 1rem;
-    }
-
-    hr {
-        margin: 2rem 0;
-    }
-}
-
 .radix-themes {
-    --default-font-family: var(--font-primary);
+    --color-background: var(--color-bg);
+    --color-panel-solid: var(--color-bg);
+    --color-surface: var(--color-bg);
+    --color-overlay: var(--color-bg);
+    --default-font-family: var(--font-primary) !important;
+    --cursor-button: pointer;
+    --cursor-checkbox: pointer;
+    --cursor-menu-item: default;
+    --cursor-radio: pointer;
+    --cursor-slider-thumb: pointer;
+    --cursor-slider-thumb-active: pointer;
+    --cursor-switch: pointer;
+
+    @include mixins.breakpoint(tablet) {
+        --scaling: 1.25;
+    }
+
+    @include mixins.breakpoint(desktop) {
+        --scaling: 1;
+    }
+
+    @include mixins.breakpoint(hd) {
+        --scaling: 1.25;
+    }
+
+    @include mixins.breakpoint(wxqhd) {
+        --scaling: 1.5;
+    }
     // override font for specific radix-ui components...
     // /* Your custom font for <Heading> components */--code-font-family:
     // 	/* Your custom font for <Code> components */ --strong-font-family:
