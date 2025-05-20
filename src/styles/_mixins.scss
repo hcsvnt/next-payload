@@ -163,7 +163,7 @@
     );
 
     @if map-has-key($layouts, $bp) {
-        @return calc(math.div(strip-units($size), map-get($layouts, $bp)) * #{sizes.$vw-value});
+        @return calc(math.div(strip-units($size), map-get($layouts, $bp)) * var(--vw-value));
     } @else {
         @warn "Unfortunately, no value could be retrieved from `#{$bp}`.";
     }
