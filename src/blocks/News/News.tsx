@@ -14,17 +14,15 @@ export default async function News({ title, news }: NewsBlock) {
             <p>{title}</p>
             <ul>
                 {/* todo: shouldn't be casted */}
-                {(news as News[]).map(
-                    ({ id, title, category, hero_image, content, published_at }) => {
-                        return (
-                            <li key={id}>
-                                <Heading as='h2'>{title}</Heading>
-                                {/* <Text>{category.title}</Text> */}
-                                {content && <RichText data={content} />}
-                            </li>
-                        );
-                    }
-                )}
+                {(news as News[]).map(({ id, title, hero_image, content, published_at }) => {
+                    return (
+                        <li key={id}>
+                            <Heading as='h2'>{title}</Heading>
+                            {/* <Text>{category.title}</Text> */}
+                            {content && <RichText data={content} />}
+                        </li>
+                    );
+                })}
             </ul>
         </div>
     );

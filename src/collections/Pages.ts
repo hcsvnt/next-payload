@@ -3,8 +3,6 @@ import type { CollectionConfig } from 'payload';
 import type { Mutable } from '@/types';
 
 import { authenticated } from '@/access/authenticated';
-import { Intro } from '@/blocks/Intro/intro.block';
-import { Media } from '@/blocks/Media/media.block';
 import { LatestNews } from '@/blocks/News/latest-news.block';
 import { News } from '@/blocks/News/news.block';
 import { slug } from '@/fields/slug';
@@ -95,7 +93,7 @@ export const Pages: CollectionConfig<'pages'> = {
                                 {
                                     name: 'layout',
                                     type: 'blocks',
-                                    blocks: [Intro, LatestNews, News, Media],
+                                    blocks: [LatestNews, News],
                                     required: true
                                     // admin: {
                                     // initCollapsed: true

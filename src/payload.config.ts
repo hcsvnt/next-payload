@@ -15,6 +15,7 @@ import type { Mutable } from '@/types';
 import { DEFAULT_LOCALE, LOCALES } from '@/static';
 
 import { Images } from './collections/Images';
+import { News } from './collections/News';
 import { Pages } from './collections/Pages';
 // import { ThirdPartyAccess } from './collections/ThridPartyAccess';
 import { Users } from './collections/Users';
@@ -31,7 +32,7 @@ export default buildConfig({
      * Data Model
      */
     globals: [Header, Footer],
-    collections: [Pages, Images, Users],
+    collections: [News, Pages, Images, Users],
     /**
      * General Configuration
      */

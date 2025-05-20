@@ -46,7 +46,6 @@ Find it [here](https://github.com/huncwotdigital/payload-cms).
     - [Collections](#collections)
         - [Pages](#pages)
         - [News](#news)
-        - [Categories](#categories)
         - [Media](#media)
         - [Users](#users)
         - [Third Party Access](#third-party-access)
@@ -254,15 +253,9 @@ docs for details on how to extend this functionality.
     publication date, a summary, and a body. The body is a layout builder to be
     constructed from predefined blocks.
 
-- #### Categories
+- #### Images
 
-    Categories can be assigned to news articles to help organize them (or
-    filter).
-
-- #### Media
-
-    Media is an upload type collection for images and videos. It supports bulk
-    upload and by default uses the uploadthing storage adapter.
+    Images is an upload type collection for images. It supports bulk upload and uses the uploadthing storage adapter.
     See [Uploads](https://payloadcms.com/docs/upload/overview) docs.
 
 - #### Users
