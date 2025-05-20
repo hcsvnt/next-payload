@@ -1,9 +1,8 @@
-# Huncwot Payload - Next.js Template
+# Next.js + Payload CMS Template
 
-This is an official [Next.js + PayloadTemplate](https://github.com/huncwotdigital/payload-cms) prepared at
-[Huncwot](https://huncwot.com) by [Mateusz Hallala](https://github.com/hcsvnt).
+This is an official TODO! by [Mateusz Hallala](https://github.com/hcsvnt).
 
-Find it [here](https://github.com/huncwotdigital/payload-cms).
+<!-- Find it [here](https://github.com//payload-cms). -->
 
 ---
 
@@ -50,7 +49,7 @@ Find it [here](https://github.com/huncwotdigital/payload-cms).
         - [Users](#users)
         - [Third Party Access](#third-party-access)
 - [Features](#features)
-    - [Huncwot branded Admin Panel](#huncwot-branded-admin-panel)
+  <!-- - [Branded Admin Panel](#branded-admin-panel) -->
     - [Authentication](#authentication)
     - [API key authentication](#api-key-authentication)
     - [Email Service](#email-service)
@@ -278,11 +277,11 @@ with official and community plugins, as well as custom functionality - it's all
 code after all.
 [See documentation](https://payloadcms.com/docs/plugins/overview).
 
-### Huncwot branded Admin Panel
+<!-- ### Branded Admin Panel
 
-The template comes with Huncwot branded UI. This can be customized further to
+The template comes with a branded UI. This can be customized further to
 client requirements.
-See [Payload blog post on white-labeling](https://payloadcms.com/blog/white-label-admin-ui) for an example.
+See [Payload blog post on white-labeling](https://payloadcms.com/blog/white-label-admin-ui) for an example. -->
 
 ### Authentication
 
@@ -298,7 +297,7 @@ API keys can be used to authenticate third party applications with your Payload 
 
 ### Email Service
 
-Email service is set up with nodemailer and [Mateusz Hallala's](matt@huncwot.com) gmail account. See [Documentation](https://payloadcms.com/docs/email/overview) for more details.
+Email service is set up with nodemailer and [Hallala Work's](hallala.work@gmail.com) account. See [Documentation](https://payloadcms.com/docs/email/overview) for more details.
 
 ### File storage
 
@@ -397,4 +396,4 @@ database.
 
 ## Questions?
 
-If you have any issues or questions, reach out to [Mateusz Hallala](matt@huncwot.com) or [Mikołaj Szczepkowski](mikolaj@huncwot.com).
+If you have any issues or questions, reach out to [Mateusz Hallala](https://github.com/hcsvnt).

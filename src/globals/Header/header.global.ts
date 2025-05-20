@@ -10,7 +10,7 @@ export const Header: GlobalConfig = {
             name: 'title',
             label: 'Title',
             type: 'text',
-            defaultValue: 'Huncwot',
+            defaultValue: 'Hallala Work',
             localized: true,
             required: true
         },

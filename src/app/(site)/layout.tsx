@@ -5,8 +5,8 @@ import Providers from './providers';
 import '@/styles/main.scss';
 
 export const metadata = {
-    title: 'Huncwot Next + Payload CMS Template',
-    description: 'Next + Payload CMS template by Huncwot'
+    title: 'Next + Payload by hallala.work',
+    description: 'Next + Payload CMS template by hallala.work'
 };
 
 export default async function RootLayout({ children }: { children: React.ReactElement }) {
