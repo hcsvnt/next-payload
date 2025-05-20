@@ -10,6 +10,14 @@ const withBundleAnalyzer = initializeBundleAnalyzer({
 
 const nextConfig: NextConfig = {
     reactStrictMode: true,
+    turbopack: {
+        rules: {
+            '*.svg': {
+                loaders: ['@svgr/webpack'],
+                as: '*.js'
+            }
+        }
+    },
     webpack(config) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const fileLoaderRule = config.module.rules.find((rule: any) => rule.test?.test?.('.svg'));
@@ -57,17 +65,6 @@ const nextConfig: NextConfig = {
         // Modify the file loader rule to ignore *.svg, since we have it handled now.
         fileLoaderRule.exclude = /\.svg$/i;
         return config;
-    },
-    experimental: {
-        turbo: {
-            rules: {
-                // Separate SVGR config for Turbopack
-                '*.svg': {
-                    loaders: ['@svgr/webpack'],
-                    as: '*.js'
-                }
-            }
-        }
     },
     images: {
         localPatterns: [

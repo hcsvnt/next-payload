@@ -1,6 +1,6 @@
 import type {
     DefaultNodeTypes,
-    SerializedBlockNode,
+    // SerializedBlockNode,
     SerializedLinkNode
 } from '@payloadcms/richtext-lexical';
 import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical';
@@ -12,9 +12,10 @@ import {
     RichText as RichTextWithoutBlocks
 } from '@payloadcms/richtext-lexical/react';
 
-import type { IntroBlock as IntroBlockType } from '@/payload.types';
+// import type { IntroBlock as IntroBlockType } from '@/payload.types';
 
-type NodeTypes = DefaultNodeTypes | SerializedBlockNode<IntroBlockType>;
+// type NodeTypes = DefaultNodeTypes | SerializedBlockNode<IntroBlockType>;
+type NodeTypes = DefaultNodeTypes;
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
     const { value, relationTo } = linkNode.fields.doc!;
