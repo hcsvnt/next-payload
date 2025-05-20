@@ -1,0 +1,145 @@
+@import 'mixins';
+@import 'variables/transitions';
+@import 'variables/sizes';
+
+@layer base {
+    :root {
+        --app-height: 100svh;
+        --vw-value: 100vw;
+
+        /**
+		* Sizes / General
+		*/
+        --padding: #{vw(24)};
+        --padding-small: #{vw(10)};
+
+        @include breakpoint(phone) {
+            --padding: #{vw(17, phone)};
+            --padding-small: #{vw(8, phone)};
+        }
+
+        /**
+		* Sizes / Elements
+		*/
+
+        /**
+		* Colors / General
+		*/
+        --color-transparent: rgb(0 0 0 / 0%);
+        --color-white: #fafafa;
+        --color-black: #101010;
+        --color-beige: #dcdcdc;
+        --color-grey: #333333;
+        --color-red: #db2f2f;
+
+        /**
+		* Colors / Semantic
+		*/
+        --color-bg: var(--color-beige);
+        --color-text: var(--color-grey);
+        --color-accent: var(--color-red);
+        --color-icon: currentcolor;
+        --color-icon-bg: var(--color-bg);
+
+        /**
+		* Borders
+		*/
+        --border-text: 1px solid var(--color-text);
+
+        /**
+		* Transitions
+		*/
+        --transition: #{$time $ease-custom};
+        --transition-fast: #{$time-fast $ease-custom};
+        --transition-fast-delay: #{$time-fast $ease-custom $time-fast};
+        --transition-slow: #{$time-slow $ease-custom};
+        --ease-in: #{$ease-in};
+        --ease-out: #{$ease-out};
+        --ease-in-out: #{$ease-in-out};
+        --ease-out-back: #{$ease-out-back};
+        --ease-custom: #{$ease-custom};
+    }
+}
+
+html,
+body {
+    font-family: var(--font-primary);
+    font-weight: 300;
+    // overscroll-behavior: none;
+}
+
+html {
+    @include breakpoint(desktop) {
+        font-size: vw($browser-context);
+    }
+
+    @include breakpoint(hd) {
+        font-size: 20px;
+    }
+
+    @include breakpoint(tablet) {
+        font-size: vw($browser-context, tablet);
+    }
+
+    @include breakpoint(phone) {
+        font-size: vw($browser-context, phone);
+    }
+}
+
+body {
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+main {
+    padding: 1rem;
+}
+
+// README.md at /docs
+.docs {
+    width: 100%;
+    padding-block: 2rem;
+    @include flex(column);
+
+    div {
+        border: 4px dashed rgb(255, 196, 18);
+        padding: 1rem 2rem;
+        max-width: 80ch;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-top: 1rem;
+    }
+
+    p + * {
+        margin-top: 1rem;
+    }
+
+    a {
+        color: blue;
+        text-decoration: underline;
+    }
+
+    li li {
+        margin-left: 1rem;
+    }
+
+    hr {
+        margin: 2rem 0;
+    }
+}
+
+.radix-themes {
+    --default-font-family: var(--font-primary);
+    // override font for specific radix-ui components...
+    // /* Your custom font for <Heading> components */--code-font-family:
+    // 	/* Your custom font for <Code> components */ --strong-font-family:
+    //     /* Your custom font for <Strong> components */ --em-font-family:
+    //     /* Your custom font for <Em> components */ --quote-font-family:
+    //     /* Your custom font for <Quote> components */;
+}

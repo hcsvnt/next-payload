@@ -1,0 +1,42 @@
+@keyframes slide-down {
+	from {
+		height: 0;
+	}
+
+	to {
+		height: var(--radix-accordion-content-height);
+	}
+}
+  
+@keyframes slide-up {
+	from {
+		height: var(--radix-accordion-content-height);
+	}
+
+	to {
+		height: 0;
+	}
+}
+
+@keyframes rotation-loop {
+	from {
+		rotate: 0deg;
+	}
+	
+	to {
+		rotate: 360deg;
+	}
+}
+
+@keyframes fade-loop {
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes dash {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+

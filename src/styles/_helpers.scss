@@ -1,0 +1,28 @@
+.sr-only {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: none;
+}
+
+%no-scrollbar {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.no-scrollbar {
+    @extend %no-scrollbar;
+}
+
+img.img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
