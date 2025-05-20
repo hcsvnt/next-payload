@@ -2,7 +2,7 @@ import type { CollectionConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
 import { buildLabels } from '@/static';
-import { getVercelURL } from '@/utils/getURL';
+import { getServerURL } from '@/utils/getServerURL';
 
 export const Users: CollectionConfig = {
     slug: 'users',
@@ -35,7 +35,7 @@ export const Users: CollectionConfig = {
         useAPIKey: false,
         cookies: {
             sameSite: 'None',
-            secure: !!getVercelURL()
+            secure: !getServerURL().includes('localhost') // secure cookies in production only
         }
     },
     fields: [

@@ -24,7 +24,7 @@ import { Users } from './collections/Users';
 import { Footer } from './globals/Footer/footer';
 import { Header } from './globals/Header/header';
 import { plugins } from './payload.plugins';
-import { getVercelURL } from './utils/getURL';
+import { getServerURL } from './utils/getServerURL';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -38,11 +38,14 @@ export default buildConfig({
     /**
      * General Configuration
      */
-    serverURL: getVercelURL() ? `https://${getVercelURL()}` : 'http://localhost:3000',
+    serverURL: getServerURL(),
     secret: process.env.PAYLOAD_SECRET || '',
     editor: lexicalEditor(),
     db: mongooseAdapter({
-        url: process.env.DATABASE_URI || ''
+        url: process.env.DATABASE_URI || '',
+        connectOptions: {
+            dbName: 'next-payload'
+        }
     }),
     /**
      * Email

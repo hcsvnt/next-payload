@@ -155,9 +155,8 @@ Next.js serves the built application from the `.next` directory.
 ### Deployment
 
 - Vercel - this template deploys on Vercel automatically (it's Next.js). Just
-  point Vercel to your repository, add your [environment
-  variables](#environment-variables) and you're good to go.
-  Thanks to utils/getVercelURL helper, we don't need to set any server/app URLs for
+  point Vercel to your repository, add your [environmentvariables](#environment-variables) and you're good to go.
+  Thanks to `utils/getServerURL` helper, we don't need to set any server/app URLs for
   Next.js or Payload.
 - Self-hosting - this template can be self-hosted on any server that supports
   Node.js. Just make sure to set the appropriate

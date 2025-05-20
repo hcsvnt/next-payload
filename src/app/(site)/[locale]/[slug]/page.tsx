@@ -8,7 +8,7 @@ import type { Locale } from '@/static';
 import RenderBlocks from '@/blocks/RenderBlocks';
 import RefreshRouteOnSave from '@/components/RefreshRouteOnSave';
 import { DEFAULT_LOCALE } from '@/static';
-import { getVercelURL } from '@/utils/getURL';
+import { getServerURL } from '@/utils/getServerURL';
 
 type Args = {
     params: Promise<{
@@ -36,9 +36,7 @@ export default async function Page({
     return page.sections.map(({ id, layout }) => (
         <section>
             <RenderBlocks key={id} blocks={layout} />
-            <RefreshRouteOnSave
-                serverURL={getVercelURL() ? `https://${getVercelURL()}` : 'http://localhost:3000'}
-            />
+            <RefreshRouteOnSave serverURL={getServerURL()} />
         </section>
     ));
 }

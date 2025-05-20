@@ -10,7 +10,7 @@ import { News } from '@/blocks/News/news.block';
 import { slug } from '@/fields/slug';
 import { BREAKPOINTS } from '@/static';
 import { buildLabels } from '@/static';
-import { getVercelURL } from '@/utils/getURL';
+import { getServerURL } from '@/utils/getServerURL';
 
 import { populatePublishedAt } from './hooks/populatePublishedAt';
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage';
@@ -60,9 +60,7 @@ export const Pages: CollectionConfig<'pages'> = {
         },
         livePreview: {
             url: ({ data }) => {
-                const baseURL = getVercelURL()
-                    ? `https://${getVercelURL()}`
-                    : 'http://localhost:3000';
+                const baseURL = getServerURL();
                 const draftSecret = process.env.DRAFT_SECRET;
                 const params = new URLSearchParams();
 
