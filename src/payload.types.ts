@@ -7,866 +7,867 @@
  */
 
 export interface Config {
-  auth: {
-    users: UserAuthOperations;
-    'third-party-access': ThirdPartyAccessAuthOperations;
-  };
-  collections: {
-    pages: Page;
-    news: News;
-    categories: Category;
-    images: Image;
-    users: User;
-    'third-party-access': ThirdPartyAccess;
-    'payload-jobs': PayloadJob;
-    'payload-locked-documents': PayloadLockedDocument;
-    'payload-preferences': PayloadPreference;
-    'payload-migrations': PayloadMigration;
-  };
-  collectionsJoins: {};
-  collectionsSelect: {
-    pages: PagesSelect<false> | PagesSelect<true>;
-    news: NewsSelect<false> | NewsSelect<true>;
-    categories: CategoriesSelect<false> | CategoriesSelect<true>;
-    images: ImagesSelect<false> | ImagesSelect<true>;
-    users: UsersSelect<false> | UsersSelect<true>;
-    'third-party-access': ThirdPartyAccessSelect<false> | ThirdPartyAccessSelect<true>;
-    'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
-    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
-    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
-    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
-  };
-  db: {
-    defaultIDType: string;
-  };
-  globals: {
-    header: Header;
-    footer: Footer;
-  };
-  globalsSelect: {
-    header: HeaderSelect<false> | HeaderSelect<true>;
-    footer: FooterSelect<false> | FooterSelect<true>;
-  };
-  locale: 'en-US' | 'de-DE' | 'pl-PL' | 'es-ES';
-  user:
-    | (User & {
-        collection: 'users';
-      })
-    | (ThirdPartyAccess & {
-        collection: 'third-party-access';
-      });
-  jobs: {
-    tasks: {
-      schedulePublish: TaskSchedulePublish;
-      inline: {
-        input: unknown;
-        output: unknown;
-      };
+    auth: {
+        users: UserAuthOperations;
+        'third-party-access': ThirdPartyAccessAuthOperations;
     };
-    workflows: unknown;
-  };
+    collections: {
+        pages: Page;
+        news: News;
+        categories: Category;
+        images: Image;
+        users: User;
+        'third-party-access': ThirdPartyAccess;
+        'payload-jobs': PayloadJob;
+        'payload-locked-documents': PayloadLockedDocument;
+        'payload-preferences': PayloadPreference;
+        'payload-migrations': PayloadMigration;
+    };
+    collectionsJoins: {};
+    collectionsSelect: {
+        pages: PagesSelect<false> | PagesSelect<true>;
+        news: NewsSelect<false> | NewsSelect<true>;
+        categories: CategoriesSelect<false> | CategoriesSelect<true>;
+        images: ImagesSelect<false> | ImagesSelect<true>;
+        users: UsersSelect<false> | UsersSelect<true>;
+        'third-party-access': ThirdPartyAccessSelect<false> | ThirdPartyAccessSelect<true>;
+        'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
+        'payload-locked-documents':
+            | PayloadLockedDocumentsSelect<false>
+            | PayloadLockedDocumentsSelect<true>;
+        'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+        'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+    };
+    db: {
+        defaultIDType: string;
+    };
+    globals: {
+        header: Header;
+        footer: Footer;
+    };
+    globalsSelect: {
+        header: HeaderSelect<false> | HeaderSelect<true>;
+        footer: FooterSelect<false> | FooterSelect<true>;
+    };
+    locale: 'en-US' | 'de-DE' | 'pl-PL' | 'es-ES';
+    user:
+        | (User & {
+              collection: 'users';
+          })
+        | (ThirdPartyAccess & {
+              collection: 'third-party-access';
+          });
+    jobs: {
+        tasks: {
+            schedulePublish: TaskSchedulePublish;
+            inline: {
+                input: unknown;
+                output: unknown;
+            };
+        };
+        workflows: unknown;
+    };
 }
 export interface UserAuthOperations {
-  forgotPassword: {
-    email: string;
-    password: string;
-  };
-  login: {
-    email: string;
-    password: string;
-  };
-  registerFirstUser: {
-    email: string;
-    password: string;
-  };
-  unlock: {
-    email: string;
-    password: string;
-  };
+    forgotPassword: {
+        email: string;
+        password: string;
+    };
+    login: {
+        email: string;
+        password: string;
+    };
+    registerFirstUser: {
+        email: string;
+        password: string;
+    };
+    unlock: {
+        email: string;
+        password: string;
+    };
 }
 export interface ThirdPartyAccessAuthOperations {
-  forgotPassword: {
-    email: string;
-    password: string;
-  };
-  login: {
-    email: string;
-    password: string;
-  };
-  registerFirstUser: {
-    email: string;
-    password: string;
-  };
-  unlock: {
-    email: string;
-    password: string;
-  };
+    forgotPassword: {
+        email: string;
+        password: string;
+    };
+    login: {
+        email: string;
+        password: string;
+    };
+    registerFirstUser: {
+        email: string;
+        password: string;
+    };
+    unlock: {
+        email: string;
+        password: string;
+    };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
 export interface Page {
-  id: string;
-  title: string;
-  slug: string;
-  sections: {
-    layout: (IntroBlock | LatestNewsBlock | NewsBlock | MediaBlock)[];
-    id?: string | null;
-  }[];
-  published_at?: string | null;
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (string | null) | Image;
-  };
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
+    id: string;
+    title: string;
+    slug: string;
+    sections: {
+        layout: (IntroBlock | LatestNewsBlock | NewsBlock | MediaBlock)[];
+        id?: string | null;
+    }[];
+    published_at?: string | null;
+    meta?: {
+        title?: string | null;
+        description?: string | null;
+        /**
+         * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+         */
+        image?: (string | null) | Image;
+    };
+    updatedAt: string;
+    createdAt: string;
+    _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "IntroBlock".
  */
 export interface IntroBlock {
-  title: string;
-  test_link: {
-    label: string;
-    newTab?: boolean | null;
-    type?: ('internal' | 'external') | null;
-    url?: string | null;
-    page?: (string | null) | Page;
-  };
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
+    title: string;
+    test_link: {
+        label: string;
+        newTab?: boolean | null;
+        type?: ('internal' | 'external') | null;
+        url?: string | null;
+        page?: (string | null) | Page;
     };
-    [k: string]: unknown;
-  } | null;
-  content_html?: string | null;
-  content_localized?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
+    content?: {
+        root: {
+            type: string;
+            children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+        };
         [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  content_localized_html?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'intro_block';
+    } | null;
+    content_html?: string | null;
+    content_localized?: {
+        root: {
+            type: string;
+            children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+        };
+        [k: string]: unknown;
+    } | null;
+    content_localized_html?: string | null;
+    id?: string | null;
+    blockName?: string | null;
+    blockType: 'intro_block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "LatestNewsBlock".
  */
 export interface LatestNewsBlock {
-  title: string;
-  count: number;
-  news?: (string | News)[] | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'latest_news_block';
+    title: string;
+    count: number;
+    news?: (string | News)[] | null;
+    id?: string | null;
+    blockName?: string | null;
+    blockType: 'latest_news_block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "news".
  */
 export interface News {
-  id: string;
-  title: string;
-  category: string | Category;
-  hero_image?: (string | null) | Image;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
+    id: string;
+    title: string;
+    category: string | Category;
+    hero_image?: (string | null) | Image;
+    content?: {
+        root: {
+            type: string;
+            children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+        };
         [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  content_html?: string | null;
-  published_at?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
+    } | null;
+    content_html?: string | null;
+    published_at?: string | null;
+    updatedAt: string;
+    createdAt: string;
+    _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
-  id: string;
-  title: string;
-  updatedAt: string;
-  createdAt: string;
+    id: string;
+    title: string;
+    updatedAt: string;
+    createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "images".
  */
 export interface Image {
-  id: string;
-  alt: string;
-  _key?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      _key?: string | null;
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
+    id: string;
+    alt: string;
+    _key?: string | null;
+    updatedAt: string;
+    createdAt: string;
+    url?: string | null;
+    thumbnailURL?: string | null;
+    filename?: string | null;
+    mimeType?: string | null;
+    filesize?: number | null;
+    width?: number | null;
+    height?: number | null;
+    focalX?: number | null;
+    focalY?: number | null;
+    sizes?: {
+        thumbnail?: {
+            _key?: string | null;
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        };
+        square?: {
+            _key?: string | null;
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        };
     };
-    square?: {
-      _key?: string | null;
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "NewsBlock".
  */
 export interface NewsBlock {
-  title: string;
-  news: (string | News)[];
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'news_block';
+    title: string;
+    news: (string | News)[];
+    id?: string | null;
+    blockName?: string | null;
+    blockType: 'news_block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "MediaBlock".
  */
 export interface MediaBlock {
-  media: string | Image;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'media_block';
+    media: string | Image;
+    id?: string | null;
+    blockName?: string | null;
+    blockType: 'media_block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
-  id: string;
-  name?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password?: string | null;
+    id: string;
+    name?: string | null;
+    updatedAt: string;
+    createdAt: string;
+    email: string;
+    resetPasswordToken?: string | null;
+    resetPasswordExpiration?: string | null;
+    salt?: string | null;
+    hash?: string | null;
+    loginAttempts?: number | null;
+    lockUntil?: string | null;
+    password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "third-party-access".
  */
 export interface ThirdPartyAccess {
-  id: string;
-  updatedAt: string;
-  createdAt: string;
-  enableAPIKey?: boolean | null;
-  apiKey?: string | null;
-  apiKeyIndex?: string | null;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password?: string | null;
+    id: string;
+    updatedAt: string;
+    createdAt: string;
+    enableAPIKey?: boolean | null;
+    apiKey?: string | null;
+    apiKeyIndex?: string | null;
+    email: string;
+    resetPasswordToken?: string | null;
+    resetPasswordExpiration?: string | null;
+    salt?: string | null;
+    hash?: string | null;
+    loginAttempts?: number | null;
+    lockUntil?: string | null;
+    password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-jobs".
  */
 export interface PayloadJob {
-  id: string;
-  /**
-   * Input data provided to the job
-   */
-  input?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  taskStatus?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  completedAt?: string | null;
-  totalTried?: number | null;
-  /**
-   * If hasError is true this job will not be retried
-   */
-  hasError?: boolean | null;
-  /**
-   * If hasError is true, this is the error that caused it
-   */
-  error?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  /**
-   * Task execution log
-   */
-  log?:
-    | {
-        executedAt: string;
-        completedAt: string;
-        taskSlug: 'inline' | 'schedulePublish';
-        taskID: string;
-        input?:
-          | {
+    id: string;
+    /**
+     * Input data provided to the job
+     */
+    input?:
+        | {
               [k: string]: unknown;
-            }
-          | unknown[]
-          | string
-          | number
-          | boolean
-          | null;
-        output?:
-          | {
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    taskStatus?:
+        | {
               [k: string]: unknown;
-            }
-          | unknown[]
-          | string
-          | number
-          | boolean
-          | null;
-        state: 'failed' | 'succeeded';
-        error?:
-          | {
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    completedAt?: string | null;
+    totalTried?: number | null;
+    /**
+     * If hasError is true this job will not be retried
+     */
+    hasError?: boolean | null;
+    /**
+     * If hasError is true, this is the error that caused it
+     */
+    error?:
+        | {
               [k: string]: unknown;
-            }
-          | unknown[]
-          | string
-          | number
-          | boolean
-          | null;
-        id?: string | null;
-      }[]
-    | null;
-  taskSlug?: ('inline' | 'schedulePublish') | null;
-  queue?: string | null;
-  waitUntil?: string | null;
-  processing?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    /**
+     * Task execution log
+     */
+    log?:
+        | {
+              executedAt: string;
+              completedAt: string;
+              taskSlug: 'inline' | 'schedulePublish';
+              taskID: string;
+              input?:
+                  | {
+                        [k: string]: unknown;
+                    }
+                  | unknown[]
+                  | string
+                  | number
+                  | boolean
+                  | null;
+              output?:
+                  | {
+                        [k: string]: unknown;
+                    }
+                  | unknown[]
+                  | string
+                  | number
+                  | boolean
+                  | null;
+              state: 'failed' | 'succeeded';
+              error?:
+                  | {
+                        [k: string]: unknown;
+                    }
+                  | unknown[]
+                  | string
+                  | number
+                  | boolean
+                  | null;
+              id?: string | null;
+          }[]
+        | null;
+    taskSlug?: ('inline' | 'schedulePublish') | null;
+    queue?: string | null;
+    waitUntil?: string | null;
+    processing?: boolean | null;
+    updatedAt: string;
+    createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: string;
-  document?:
-    | ({
-        relationTo: 'pages';
-        value: string | Page;
-      } | null)
-    | ({
-        relationTo: 'news';
-        value: string | News;
-      } | null)
-    | ({
-        relationTo: 'categories';
-        value: string | Category;
-      } | null)
-    | ({
-        relationTo: 'images';
-        value: string | Image;
-      } | null)
-    | ({
-        relationTo: 'users';
-        value: string | User;
-      } | null)
-    | ({
-        relationTo: 'third-party-access';
-        value: string | ThirdPartyAccess;
-      } | null)
-    | ({
-        relationTo: 'payload-jobs';
-        value: string | PayloadJob;
-      } | null);
-  globalSlug?: string | null;
-  user:
-    | {
-        relationTo: 'users';
-        value: string | User;
-      }
-    | {
-        relationTo: 'third-party-access';
-        value: string | ThirdPartyAccess;
-      };
-  updatedAt: string;
-  createdAt: string;
+    id: string;
+    document?:
+        | ({
+              relationTo: 'pages';
+              value: string | Page;
+          } | null)
+        | ({
+              relationTo: 'news';
+              value: string | News;
+          } | null)
+        | ({
+              relationTo: 'categories';
+              value: string | Category;
+          } | null)
+        | ({
+              relationTo: 'images';
+              value: string | Image;
+          } | null)
+        | ({
+              relationTo: 'users';
+              value: string | User;
+          } | null)
+        | ({
+              relationTo: 'third-party-access';
+              value: string | ThirdPartyAccess;
+          } | null)
+        | ({
+              relationTo: 'payload-jobs';
+              value: string | PayloadJob;
+          } | null);
+    globalSlug?: string | null;
+    user:
+        | {
+              relationTo: 'users';
+              value: string | User;
+          }
+        | {
+              relationTo: 'third-party-access';
+              value: string | ThirdPartyAccess;
+          };
+    updatedAt: string;
+    createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: string;
-  user:
-    | {
-        relationTo: 'users';
-        value: string | User;
-      }
-    | {
-        relationTo: 'third-party-access';
-        value: string | ThirdPartyAccess;
-      };
-  key?: string | null;
-  value?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
+    id: string;
+    user:
+        | {
+              relationTo: 'users';
+              value: string | User;
+          }
+        | {
+              relationTo: 'third-party-access';
+              value: string | ThirdPartyAccess;
+          };
+    key?: string | null;
+    value?:
+        | {
+              [k: string]: unknown;
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    updatedAt: string;
+    createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: string;
-  name?: string | null;
-  batch?: number | null;
-  updatedAt: string;
-  createdAt: string;
+    id: string;
+    name?: string | null;
+    batch?: number | null;
+    updatedAt: string;
+    createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages_select".
  */
 export interface PagesSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  sections?:
-    | T
-    | {
-        layout?:
-          | T
-          | {
-              intro_block?: T | IntroBlockSelect<T>;
-              latest_news_block?: T | LatestNewsBlockSelect<T>;
-              news_block?: T | NewsBlockSelect<T>;
-              media_block?: T | MediaBlockSelect<T>;
-            };
-        id?: T;
-      };
-  published_at?: T;
-  meta?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        image?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
+    title?: T;
+    slug?: T;
+    sections?:
+        | T
+        | {
+              layout?:
+                  | T
+                  | {
+                        intro_block?: T | IntroBlockSelect<T>;
+                        latest_news_block?: T | LatestNewsBlockSelect<T>;
+                        news_block?: T | NewsBlockSelect<T>;
+                        media_block?: T | MediaBlockSelect<T>;
+                    };
+              id?: T;
+          };
+    published_at?: T;
+    meta?:
+        | T
+        | {
+              title?: T;
+              description?: T;
+              image?: T;
+          };
+    updatedAt?: T;
+    createdAt?: T;
+    _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "IntroBlock_select".
  */
 export interface IntroBlockSelect<T extends boolean = true> {
-  title?: T;
-  test_link?:
-    | T
-    | {
-        label?: T;
-        newTab?: T;
-        type?: T;
-        url?: T;
-        page?: T;
-      };
-  content?: T;
-  content_html?: T;
-  content_localized?: T;
-  content_localized_html?: T;
-  id?: T;
-  blockName?: T;
+    title?: T;
+    test_link?:
+        | T
+        | {
+              label?: T;
+              newTab?: T;
+              type?: T;
+              url?: T;
+              page?: T;
+          };
+    content?: T;
+    content_html?: T;
+    content_localized?: T;
+    content_localized_html?: T;
+    id?: T;
+    blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "LatestNewsBlock_select".
  */
 export interface LatestNewsBlockSelect<T extends boolean = true> {
-  title?: T;
-  count?: T;
-  news?: T;
-  id?: T;
-  blockName?: T;
+    title?: T;
+    count?: T;
+    news?: T;
+    id?: T;
+    blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "NewsBlock_select".
  */
 export interface NewsBlockSelect<T extends boolean = true> {
-  title?: T;
-  news?: T;
-  id?: T;
-  blockName?: T;
+    title?: T;
+    news?: T;
+    id?: T;
+    blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "MediaBlock_select".
  */
 export interface MediaBlockSelect<T extends boolean = true> {
-  media?: T;
-  id?: T;
-  blockName?: T;
+    media?: T;
+    id?: T;
+    blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "news_select".
  */
 export interface NewsSelect<T extends boolean = true> {
-  title?: T;
-  category?: T;
-  hero_image?: T;
-  content?: T;
-  content_html?: T;
-  published_at?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
+    title?: T;
+    category?: T;
+    hero_image?: T;
+    content?: T;
+    content_html?: T;
+    published_at?: T;
+    updatedAt?: T;
+    createdAt?: T;
+    _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories_select".
  */
 export interface CategoriesSelect<T extends boolean = true> {
-  title?: T;
-  updatedAt?: T;
-  createdAt?: T;
+    title?: T;
+    updatedAt?: T;
+    createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "images_select".
  */
 export interface ImagesSelect<T extends boolean = true> {
-  alt?: T;
-  _key?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
-  sizes?:
-    | T
-    | {
-        thumbnail?:
-          | T
-          | {
-              _key?: T;
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        square?:
-          | T
-          | {
-              _key?: T;
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-      };
+    alt?: T;
+    _key?: T;
+    updatedAt?: T;
+    createdAt?: T;
+    url?: T;
+    thumbnailURL?: T;
+    filename?: T;
+    mimeType?: T;
+    filesize?: T;
+    width?: T;
+    height?: T;
+    focalX?: T;
+    focalY?: T;
+    sizes?:
+        | T
+        | {
+              thumbnail?:
+                  | T
+                  | {
+                        _key?: T;
+                        url?: T;
+                        width?: T;
+                        height?: T;
+                        mimeType?: T;
+                        filesize?: T;
+                        filename?: T;
+                    };
+              square?:
+                  | T
+                  | {
+                        _key?: T;
+                        url?: T;
+                        width?: T;
+                        height?: T;
+                        mimeType?: T;
+                        filesize?: T;
+                        filename?: T;
+                    };
+          };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
-  name?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
+    name?: T;
+    updatedAt?: T;
+    createdAt?: T;
+    email?: T;
+    resetPasswordToken?: T;
+    resetPasswordExpiration?: T;
+    salt?: T;
+    hash?: T;
+    loginAttempts?: T;
+    lockUntil?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "third-party-access_select".
  */
 export interface ThirdPartyAccessSelect<T extends boolean = true> {
-  updatedAt?: T;
-  createdAt?: T;
-  enableAPIKey?: T;
-  apiKey?: T;
-  apiKeyIndex?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
+    updatedAt?: T;
+    createdAt?: T;
+    enableAPIKey?: T;
+    apiKey?: T;
+    apiKeyIndex?: T;
+    email?: T;
+    resetPasswordToken?: T;
+    resetPasswordExpiration?: T;
+    salt?: T;
+    hash?: T;
+    loginAttempts?: T;
+    lockUntil?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-jobs_select".
  */
 export interface PayloadJobsSelect<T extends boolean = true> {
-  input?: T;
-  taskStatus?: T;
-  completedAt?: T;
-  totalTried?: T;
-  hasError?: T;
-  error?: T;
-  log?:
-    | T
-    | {
-        executedAt?: T;
-        completedAt?: T;
-        taskSlug?: T;
-        taskID?: T;
-        input?: T;
-        output?: T;
-        state?: T;
-        error?: T;
-        id?: T;
-      };
-  taskSlug?: T;
-  queue?: T;
-  waitUntil?: T;
-  processing?: T;
-  updatedAt?: T;
-  createdAt?: T;
+    input?: T;
+    taskStatus?: T;
+    completedAt?: T;
+    totalTried?: T;
+    hasError?: T;
+    error?: T;
+    log?:
+        | T
+        | {
+              executedAt?: T;
+              completedAt?: T;
+              taskSlug?: T;
+              taskID?: T;
+              input?: T;
+              output?: T;
+              state?: T;
+              error?: T;
+              id?: T;
+          };
+    taskSlug?: T;
+    queue?: T;
+    waitUntil?: T;
+    processing?: T;
+    updatedAt?: T;
+    createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
-  document?: T;
-  globalSlug?: T;
-  user?: T;
-  updatedAt?: T;
-  createdAt?: T;
+    document?: T;
+    globalSlug?: T;
+    user?: T;
+    updatedAt?: T;
+    createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences_select".
  */
 export interface PayloadPreferencesSelect<T extends boolean = true> {
-  user?: T;
-  key?: T;
-  value?: T;
-  updatedAt?: T;
-  createdAt?: T;
+    user?: T;
+    key?: T;
+    value?: T;
+    updatedAt?: T;
+    createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations_select".
  */
 export interface PayloadMigrationsSelect<T extends boolean = true> {
-  name?: T;
-  batch?: T;
-  updatedAt?: T;
-  createdAt?: T;
+    name?: T;
+    batch?: T;
+    updatedAt?: T;
+    createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header".
  */
 export interface Header {
-  id: string;
-  title: string;
-  show_locale_selector?: boolean | null;
-  menu?: {
-    show_nav?: boolean | null;
-    navigation?:
-      | {
-          label: string;
-          link: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  updatedAt?: string | null;
-  createdAt?: string | null;
+    id: string;
+    title: string;
+    show_locale_selector?: boolean | null;
+    menu?: {
+        show_nav?: boolean | null;
+        navigation?:
+            | {
+                  label: string;
+                  link: string;
+                  id?: string | null;
+              }[]
+            | null;
+    };
+    updatedAt?: string | null;
+    createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "footer".
  */
 export interface Footer {
-  id: string;
-  title: string;
-  disclaimer?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
+    id: string;
+    title: string;
+    disclaimer?: {
+        root: {
+            type: string;
+            children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+        };
         [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
+    } | null;
+    updatedAt?: string | null;
+    createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
-  title?: T;
-  show_locale_selector?: T;
-  menu?:
-    | T
-    | {
-        show_nav?: T;
-        navigation?:
-          | T
-          | {
-              label?: T;
-              link?: T;
-              id?: T;
-            };
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
+    title?: T;
+    show_locale_selector?: T;
+    menu?:
+        | T
+        | {
+              show_nav?: T;
+              navigation?:
+                  | T
+                  | {
+                        label?: T;
+                        link?: T;
+                        id?: T;
+                    };
+          };
+    updatedAt?: T;
+    createdAt?: T;
+    globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  title?: T;
-  disclaimer?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
+    title?: T;
+    disclaimer?: T;
+    updatedAt?: T;
+    createdAt?: T;
+    globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "TaskSchedulePublish".
  */
 export interface TaskSchedulePublish {
-  input: {
-    type?: ('publish' | 'unpublish') | null;
-    locale?: string | null;
-    doc?:
-      | ({
-          relationTo: 'pages';
-          value: string | Page;
-        } | null)
-      | ({
-          relationTo: 'news';
-          value: string | News;
-        } | null);
-    global?: string | null;
-    user?: (string | null) | User;
-  };
-  output?: unknown;
+    input: {
+        type?: ('publish' | 'unpublish') | null;
+        locale?: string | null;
+        doc?:
+            | ({
+                  relationTo: 'pages';
+                  value: string | Page;
+              } | null)
+            | ({
+                  relationTo: 'news';
+                  value: string | News;
+              } | null);
+        global?: string | null;
+        user?: (string | null) | User;
+    };
+    output?: unknown;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "auth".
  */
 export interface Auth {
-  [k: string]: unknown;
+    [k: string]: unknown;
 }
 
-
 declare module 'payload' {
-  export interface GeneratedTypes extends Config {}
+    export interface GeneratedTypes extends Config {}
 }

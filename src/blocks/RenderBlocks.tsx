@@ -2,15 +2,10 @@ import React from 'react';
 
 import type { Page } from '@/payload.types';
 
-import Intro from './Intro/Intro.component';
-import Media from './Media/Media.component'; // todo:
-import News from './News/News.component';
+import News from './News/News';
 
-// keep alphabetical order, please
 const blockComponents = {
-    intro_block: Intro,
     latest_news_block: News,
-    media_block: Media,
     news_block: News
 };
 

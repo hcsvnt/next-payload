@@ -1,7 +1,7 @@
 'use client';
 import { Button, DropdownMenu } from '@radix-ui/themes';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 import useCookie from '@/hooks/useCookie';
 import { LOCALES } from '@/static';
@@ -12,7 +12,6 @@ export default function LocaleSelector({ locale }: { locale: string }) {
     const { updateCookie } = useCookie('locale', locale);
     const currentLocaleLabel = LOCALES.find(({ code }) => code.toLowerCase() === locale)?.label;
     const pathname = usePathname();
-    const router = useRouter();
 
     /**
      *  oh, wow, never thought of this, but if the path starts with our delimieter,

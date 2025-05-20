@@ -1,7 +1,6 @@
-import { Heading, Text } from '@radix-ui/themes';
-import Image from 'next/image';
+import { Heading } from '@radix-ui/themes';
 
-import type { LatestNewsBlock, News, NewsBlock } from '@/payload.types';
+import type { News, NewsBlock } from '@/payload.types';
 
 import RichText from '@/components/RichText/RichText';
 

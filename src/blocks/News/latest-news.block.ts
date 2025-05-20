@@ -3,7 +3,6 @@ import type { Block } from 'payload';
 /**
  * The news field is an example of an automatically populated relationship field.
  */
-
 export const LatestNews: Block = {
     slug: 'latest_news_block',
     interfaceName: 'LatestNewsBlock',
