@@ -42,6 +42,7 @@ export default buildConfig({
     db: mongooseAdapter({
         url: process.env.DATABASE_URI || '',
         connectOptions: {
+            // DB with selected name needs to first be created under the specified URI
             dbName: 'next-payload'
         }
     }),
