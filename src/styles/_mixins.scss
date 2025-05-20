@@ -185,7 +185,7 @@
     }
 }
 
-// REM/VREM
+// REM/mixins.vrem
 @function vrem($size) {
     @return math.div(strip-units($size), strip-units(sizes.$browser-context)) + rem;
 }
