@@ -30,7 +30,7 @@ export function chainMiddleware(
 
 // --- Middleware entry point ---
 export function middleware(request: NextRequest, event: NextFetchEvent) {
-    return chainMiddleware([localeMiddleware])(request, event);
+    return chainMiddleware([])(request, event);
 }
 
 export const config = {

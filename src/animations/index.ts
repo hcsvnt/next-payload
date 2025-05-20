@@ -1,4 +1,4 @@
-import type { HTMLMotionProps } from 'framer-motion';
+import type { HTMLMotionProps } from 'motion/react';
 
 export const easings = {
     'ease-in': [0.895, 0.03, 0.685, 0.22],

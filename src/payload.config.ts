@@ -73,7 +73,6 @@ export default buildConfig({
     /**
      * Custom Admin Panel
      */
-
     admin: {
         avatar: 'default', // instead of the ugly blue 'gravatar'
         user: Users.slug,
