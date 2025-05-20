@@ -10,7 +10,6 @@ import { buildConfig } from 'payload';
 import sharp from 'sharp';
 import { fileURLToPath } from 'url';
 
-// storage-adapter-import-placeholder
 import type { Mutable } from '@/types';
 
 import { DEFAULT_LOCALE, LOCALES } from '@/static';
@@ -52,7 +51,7 @@ export default buildConfig({
      */
     email: nodemailerAdapter({
         defaultFromAddress: process.env.SMTP_USER || '',
-        defaultFromName: 'Huncwot Payload CMS',
+        defaultFromName: process.env.SMTP_FROM || '',
         transportOptions: {
             service: process.env.SMTP_SERVICE,
             auth: {
@@ -76,20 +75,7 @@ export default buildConfig({
      */
 
     admin: {
-        // avatar: 'default', // instead of the ugly blue 'gravatar'
-        avatar: {
-            Component: '/components/HuncwotLogo/HuncwotLogo'
-        },
-        components: {
-            graphics: {
-                Logo: {
-                    path: '/components/HuncwotLogo/HuncwotLogo',
-                    serverProps: {
-                        isAvatar: false
-                    }
-                }
-            }
-        },
+        avatar: 'default', // instead of the ugly blue 'gravatar'
         user: Users.slug,
         importMap: {
             baseDir: path.resolve(dirname)
