@@ -13,7 +13,7 @@
         --padding: #{mixins.vw(24)};
         --padding-small: #{mixins.vw(10)};
 
-        @include breakpoint(phone) {
+        @include mixins.breakpoint(phone) {
             --padding: #{mixins.vw(17, phone)};
             --padding-small: #{mixins.vw(8, phone)};
         }
@@ -70,19 +70,19 @@ body {
 }
 
 html {
-    @include breakpoint(desktop) {
+    @include mixins.breakpoint(desktop) {
         font-size: mixins.vw(sizes.$browser-context);
     }
 
-    @include breakpoint(hd) {
+    @include mixins.breakpoint(hd) {
         font-size: 20px;
     }
 
-    @include breakpoint(tablet) {
+    @include mixins.breakpoint(tablet) {
         font-size: mixins.vw(sizes.$browser-context, tablet);
     }
 
-    @include breakpoint(phone) {
+    @include mixins.breakpoint(phone) {
         font-size: mixins.vw(sizes.$browser-context, phone);
     }
 }
