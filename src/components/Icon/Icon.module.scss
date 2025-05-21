@@ -1,4 +1,6 @@
+@use '@/styles/mixins';
+
 .close {
-    width: vrem(35);
+    width: mixins.vrem(35);
     aspect-ratio: 1/1;
 }

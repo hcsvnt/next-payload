@@ -30,7 +30,7 @@ export function chainMiddleware(
 
 // --- Middleware entry point ---
 export function middleware(request: NextRequest, event: NextFetchEvent) {
-    return chainMiddleware([])(request, event);
+    return chainMiddleware([localeMiddleware])(request, event);
 }
 
 export const config = {
@@ -98,6 +98,7 @@ function getLocale(request: NextRequest): string {
             DEFAULT_LOCALE.code
         );
     } catch (e) {
+        // eslint-disable-next-line no-console
         console.error(e);
         return DEFAULT_LOCALE.code;
     }
